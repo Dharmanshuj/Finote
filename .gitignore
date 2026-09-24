@@ -1,0 +1,58 @@
+# Java and Maven build output
+**/target/
+**/build/
+*.class
+*.jar
+*.war
+*.ear
+*.log
+
+# Maven Wrapper downloads and local Maven cache
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties.next
+
+# Node.js and frontend build output
+**/node_modules/
+fitness-app-frontend/dist/
+fitness-app-frontend/.vite/
+*.tsbuildinfo
+
+# IDE and editor settings
+.idea/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+.factorypath
+.apt_generated/
+.springBeans
+.sts4-cache/
+.vscode/
+
+# Operating-system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Logs and temporary files
+logs/
+*.log.*
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Local environment variables and secrets
+.env
+.env.*
+!.env.example
+!.env.template
+*.pem
+*.key
+*.p12
+*.pfx
+service-account*.json

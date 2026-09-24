@@ -3,9 +3,9 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/fitness_user_db
-    username: postgres
-    password: admin@123
+    url: jdbc:postgresql://${PGHOST}/${PGDATABASE}?sslmode=${PGSSLMODE:require}&channel_binding=${PGCHANNELBINDING:require}
+    username: ${PGUSER}
+    password: ${PGPASSWORD}
   jpa:
     hibernate:
       ddl-auto: update

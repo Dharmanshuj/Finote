@@ -3,3 +3,8 @@ spring:
     name: activity-service
   config:
     import: optional:configserver:http://localhost:8888
+
+  data:
+    mongodb:
+      uri: ${MONGODB_URI}
+      database: fitnessactivity
