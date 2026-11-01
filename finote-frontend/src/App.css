@@ -1,0 +1,125 @@
+#root {
+  min-height: 100vh;
+}
+
+.app-shell {
+  min-height: 100vh;
+  background: #f6f5ef;
+  color: #172b26;
+}
+
+.topbar {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(20px, 6vw, 88px);
+  border-bottom: 1px solid #e4e5da;
+  background: rgba(255, 255, 255, .78);
+}
+
+.brand {
+  color: #173b32;
+  font-family: Georgia, 'Times New Roman', serif !important;
+  font-weight: 700 !important;
+  letter-spacing: -.04em !important;
+}
+
+.page-content {
+  width: min(100% - 40px, 1040px);
+  margin: 0 auto;
+  padding: 58px 0 80px;
+}
+
+.eyebrow {
+  color: #9a6b36;
+  font-size: .75rem !important;
+  font-weight: 700 !important;
+  letter-spacing: .14em !important;
+  text-transform: uppercase;
+}
+
+.page-title {
+  margin: 8px 0 10px !important;
+  color: #173b32;
+  font-family: Georgia, 'Times New Roman', serif !important;
+  font-size: clamp(2rem, 5vw, 3.1rem) !important;
+  letter-spacing: -.045em !important;
+}
+
+.page-intro {
+  max-width: 620px;
+  color: #69766f;
+  line-height: 1.7 !important;
+}
+
+.journal-grid {
+  display: grid;
+  grid-template-columns: minmax(260px, .85fr) minmax(0, 1.4fr);
+  gap: 24px;
+  margin-top: 34px;
+  align-items: start;
+}
+
+.finote-card {
+  border: 1px solid #e4e5da !important;
+  border-radius: 18px !important;
+  background: #fffefa !important;
+  box-shadow: 0 8px 28px rgba(30, 53, 43, .045) !important;
+}
+
+.section-title {
+  margin-bottom: 18px !important;
+  color: #173b32;
+  font-family: Georgia, 'Times New Roman', serif !important;
+}
+
+.entry-list {
+  display: grid;
+  gap: 12px;
+}
+
+.entry-card {
+  cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease !important;
+}
+
+.entry-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(30, 53, 43, .09) !important;
+}
+
+.login-wrap {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: radial-gradient(ellipse at 50% 0%, #e5eadc 0, #f6f5ef 55%);
+}
+
+.login-card {
+  width: min(100%, 460px);
+  padding: 48px !important;
+  text-align: left;
+}
+
+.login-card .MuiButton-root,
+.finote-button.MuiButton-root {
+  border-radius: 10px;
+  background: #1d5143;
+  padding: 12px 20px;
+  text-transform: none;
+  font-weight: 700;
+}
+
+.login-card .MuiButton-root:hover,
+.finote-button.MuiButton-root:hover {
+  background: #143d33;
+}
+
+@media (max-width: 720px) {
+  .journal-grid { grid-template-columns: 1fr; }
+  .page-content { padding-top: 38px; }
+  .login-card { padding: 32px 24px !important; }
+  .topbar { padding: 0 20px; }
+}

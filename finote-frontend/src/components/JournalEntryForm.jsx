@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { addActivity } from '../services/api'
 
 
-const ActivityForm = ({ onActivityAdded }) => {
+const JournalEntryForm = ({ onActivityAdded }) => {
 
     const [activity, setActivity] = useState({
         type: "RUNNING", duration: '', caloriesBurned: '',
@@ -22,9 +22,9 @@ const ActivityForm = ({ onActivityAdded }) => {
     }
     
   return (
-    <Box component="form" onSubmit={handleSubmit} sx={{ mb: 4 }}>
+    <Box component="form" onSubmit={handleSubmit}>
     <FormControl fullWidth sx={{mb: 2}}>
-        <InputLabel>Activity Type</InputLabel>
+        <InputLabel>Entry type</InputLabel>
         <Select
             value={activity.type}
             onChange={(e) => setActivity({...activity, type: e.target.value})}>
@@ -34,24 +34,24 @@ const ActivityForm = ({ onActivityAdded }) => {
             </Select>
     </FormControl>
     <TextField fullWidth
-                label="Duration (Minutes)"
+                label="Time spent (minutes)"
                 type='number'
                 sx={{ mb: 2}}
                 value={activity.duration}
                 onChange={(e) => setActivity({...activity, duration: e.target.value})}/>
 
 <TextField fullWidth
-                label="Calories Burned"
+                label="Calories burned"
                 type='number'
                 sx={{ mb: 2}}
                 value={activity.caloriesBurned}
                 onChange={(e) => setActivity({...activity, caloriesBurned: e.target.value})}/>
 
 <Button type='submit' variant='contained'>
-    Add Activity
+    Save entry
 </Button>
   </Box>
   )
 }
 
-export default ActivityForm
+export default JournalEntryForm

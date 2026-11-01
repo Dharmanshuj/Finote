@@ -3,7 +3,7 @@ import { useParams } from 'react-router'
 import { getActivityDetail } from '../services/api';
 import { Box, Card, CardContent, Divider, Typography } from '@mui/material';
 
-const ActivityDetail = () => {
+const JournalEntryDetail = () => {
   const { id } = useParams();
   const [activity, setActivity] = useState(null);
   const [recommendation, setRecommendation] = useState(null);
@@ -23,30 +23,31 @@ const ActivityDetail = () => {
   }, [id]);
 
   if (!activity) {
-    return <Typography>Loading...</Typography>
+    return <Box className="page-content"><Typography color="text.secondary">Loading journal entry…</Typography></Box>
   }
   return (
-    <Box sx={{ maxWidth: 800, mx: 'auto', p: 2 }}>
-            <Card sx={{ mb: 2 }}>
+    <Box className="page-content" sx={{ maxWidth: 850 }}>
+            <Typography className="eyebrow">Journal entry</Typography>
+            <Card className="finote-card" sx={{ mb: 2 }}>
                 <CardContent>
-                    <Typography variant="h5" gutterBottom>Activity Details</Typography>
+                    <Typography className="section-title" variant="h5" gutterBottom>Entry details</Typography>
                     <Typography>Type: {activity.type}</Typography>
-                    <Typography>Duration: {activity.duration} minutes</Typography>
-                    <Typography>Calories Burned: {activity.caloriesBurned}</Typography>
+                    <Typography>Time spent: {activity.duration} minutes</Typography>
+                    <Typography>Calories burned: {activity.caloriesBurned}</Typography>
                     <Typography>Date: {new Date(activity.createdAt).toLocaleString()}</Typography>
                 </CardContent>
             </Card>
 
             {recommendation && (
-                <Card>
+                <Card className="finote-card">
                     <CardContent>
-                        <Typography variant="h5" gutterBottom>AI Recommendation</Typography>
-                        <Typography variant="h6">Analysis</Typography>
+                        <Typography className="section-title" variant="h5" gutterBottom>Reflection and ideas</Typography>
+                        <Typography variant="h6">Reflection</Typography>
                         <Typography paragraph>{activity.recommendation}</Typography>
                         
                         <Divider sx={{ my: 2 }} />
                         
-                        <Typography variant="h6">Improvements</Typography>
+                        <Typography variant="h6">Ideas to consider</Typography>
                         {activity?.improvements?.map((improvement, index) => (
                             <Typography key={index} paragraph>• {activity.improvements}</Typography>
                         ))}
@@ -60,7 +61,7 @@ const ActivityDetail = () => {
                         
                         <Divider sx={{ my: 2 }} />
                         
-                        <Typography variant="h6">Safety Guidelines</Typography>
+                        <Typography variant="h6">Helpful reminders</Typography>
                         {activity?.safety?.map((safety, index) => (
                             <Typography key={index} paragraph>• {safety}</Typography>
                         ))}
@@ -71,4 +72,4 @@ const ActivityDetail = () => {
   )
 }
 
-export default ActivityDetail
+export default JournalEntryDetail

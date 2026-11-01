@@ -32,27 +32,27 @@ public class KeycloakUserSyncFilter implements WebFilter {
         if (userId != null && token != null){
             String finalUserId = userId;
             return userService.validateUser(userId)
-                    .flatMap(exist -> {
-                        if (!exist) {
-                            // Register User
+                .flatMap(exist -> {
+                    if (!exist) {
+                        // Register User
 
-                            if (registerRequest != null) {
-                                return userService.registerUser(registerRequest)
-                                        .then(Mono.empty());
-                            } else {
-                                return Mono.empty();
-                            }
+                        if (registerRequest != null) {
+                            return userService.registerUser(registerRequest)
+                                    .then(Mono.empty());
                         } else {
-                            log.info("User already exist, Skipping sync.");
                             return Mono.empty();
                         }
-                    })
-                    .then(Mono.defer(() -> {
-                        ServerHttpRequest mutatedRequest = exchange.getRequest().mutate()
-                                .header("X-User-ID", finalUserId)
-                                .build();
-                        return chain.filter(exchange.mutate().request(mutatedRequest).build());
-                    }));
+                    } else {
+                        log.info("User already exist, Skipping sync.");
+                        return Mono.empty();
+                    }
+                })
+                .then(Mono.defer(() -> {
+                    ServerHttpRequest mutatedRequest = exchange.getRequest().mutate()
+                            .header("X-User-ID", finalUserId)
+                            .build();
+                    return chain.filter(exchange.mutate().request(mutatedRequest).build());
+                }));
         }
         return chain.filter(exchange);
     }
